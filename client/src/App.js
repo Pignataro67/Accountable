@@ -1,8 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import UserHomepage from './Components/userHomepage';
+import Timer from './Components/timer';
 
-function App() {
+class App extends Component {
+  constructor () {
+    super()
+    this.state = {
+      user: {
+        name: ""
+      }
+    }
+  }
+  
+render() {
+
   return (
     <div className="App">
       <header className="App-header">
