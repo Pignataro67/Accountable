@@ -9,7 +9,14 @@ class Timer extends Component {
 
 
   render() {
-    
+    const minutes = 20;
+    let pausation = false;
+    const toggle = (pausation) => {
+      console.log("clicked")
+     if (pausation === false) {
+         pausation = true;
+      } else {
+        pausation = false}
     };
 
     return 
