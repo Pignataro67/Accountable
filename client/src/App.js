@@ -22,6 +22,19 @@ class App extends Component {
       }
     }
 
+    componentDidMount(){
+
+      fetch("http://localhost:3001/work_sessions")
+      .then(res => res.json())
+      .then(data => filterWorkSessions(data))
+  
+      const filterWorkSessions = (data) => {
+        let sessions = data.filter( item => {
+          return item.user_id === this.state.user.id
+        })
+      }
+    }
+    
 render() {
 
   return (
