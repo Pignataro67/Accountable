@@ -32,9 +32,27 @@ class App extends Component {
         let sessions = data.filter( item => {
           return item.user_id === this.state.user.id
         })
+
+        this.setState({
+          ...this.state,
+          workSessions: sessions
+        })
+      }
+  
+      fetch("http://localhost:3001/tasks")
+      .then(res => res.json())
+      .then(data => filterTasks(data))
+  
+      const filterTasks = (data) => {
+        let tasks = data.filter(item => {
+           this.state.workSessions.map((wSession, idx) => {
+            console.log(wSession)
+          })
+  
+        })  
       }
     }
-    
+
 render() {
 
   return (
