@@ -9,6 +9,16 @@ body {
   background-color: white;
 }
 
+.timer {
+  background-color: gray;
+  display: inline-block;
+
+}
+.calendar{
+  width: 300px;
+  margin: 10px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
