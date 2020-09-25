@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import TaskList from './taskList';
+import CalendarTracker from './calendar';
+import Timer from './timer';
 
 class UserHomepage extends Component {
 
@@ -11,7 +14,11 @@ class UserHomepage extends Component {
 
   render() {
     return (
-      <h1> Serious---ly </h1>
+      <Fragment >
+        <TaskList />
+        <Timer />
+        <CalendarTracker />
+      </Fragment >
     )
   }
 }
