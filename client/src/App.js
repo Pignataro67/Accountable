@@ -11,15 +11,10 @@ class App extends Component {
         name: "",
         id: 1
       },
-      tasks: [
-        {
-          title:"Do some weird stuff",
-          status: "open",
-          workSessions_id: null
-        }
-      ],
+      tasks: [],
       workSessions: [],
-      currentSession: []
+      currentSession: [],
+      currentTasks: []
       }
     }
 
@@ -37,37 +32,68 @@ class App extends Component {
         this.setState({
           ...this.state,
           workSessions: sessions
+        }, ()=> {getCurrentSession()})
+      }
+  
+      const getCurrentSession = () => {
+        if (this.state.currentSession.length === 0) {
+  
+          const lastSession = this.state.workSessions[this.state.workSessions.length - 1]
+  
+          // console.log(this.state.workSessions)
+  
+          if (lastSession.start_time === ""){
+  
+            const sessions = this.state.workSessions.filter(session => session !== lastSession)
+  
+            this.setState({
+              ...this.state,
+              currentSession: lastSession,
+              workSessions: sessions
+            }, )
+  
+          } else {
+            fetch("http://localhost:3001/work_sessions", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+              },
+              body: JSON.stringify({
+                start_time: "",
+                end_time: "",
+                total_time: 20,
+                note: "",
+                user_id: this.state.user.id
+              })
+            })
+            .then(resp => resp.json())
+            .then(wsData => {
+              this.setState({
+                ...this.state,
+                currentSession: wsData
+              }, )
+            })
+          }
+        }
+      }
+    };
+
+    componentDidUpdate(){
+
+      const getOpenTasks = () => {
+        fetch("http://localhost:3001/tasks")
+        .then(res => res.json())
+        .then(data => filterOpenTasks(data))
+      }
+  
+      const filterOpenTasks = tasks => {
+        const openTasks = tasks.filter(task => {
+          return task.status === "open"
+  
+          reassignWS(openTasks)
         })
       }
-  
-      if (this.state.currentSession.length === 0) {
-        const lastSession = this.state.workSessions[this.state.workSessions.length - 1]
-        if (lastSession.start_time === ""){
-          const sessions = this.state.workSessions.filter(session => session !== lastSession)
-          this.setState({
-            ...this.state,
-            currentSession: lastSession,
-            workSessions: sessions
-          })
-        } else {
-          fetch("http://localhost:3001/work_sessions", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json"
-            },
-            body: JSON.stringify({
-              start_time: "",
-              end_time: "",
-              total_time: 20,
-              note: "",
-              user_id: this.state.user.id
-          })
-  
-        })  
-      }
-    }
-  }
 
 render() {
 
