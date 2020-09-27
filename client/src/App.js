@@ -95,15 +95,31 @@ class App extends Component {
         })
       }
 
-render() {
+      const reassignWS = openTasks => {
+        openTasks.map(task => {
+          fetch(`http://localhost:3001/tasks/${task.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({
+              work_session_id: this.state.currentSession.id
+            })
+          })
+        })
+      }
 
-  return (
-    <div className="App">
-      <UserHomepage />
-    </div>
-  );
-}
+      getOpenTasks();
+    };
 
+  render() {
+    return (
+      <div className="App">
+        <UserHomepage />
+      </div>
+    );
+  }
 }
 
 export default App;
