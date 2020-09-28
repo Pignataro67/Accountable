@@ -36,6 +36,15 @@ import ReactCountdownClock from "react-countdown-clock";
         />
         <div>      
         </div>
+
+        <div className="timer-btn">
+          {this.state.pausation ? (
+          <button className="start-button" onClick={() =>this.toggle()} >Start</button>):
+          
+          (<button onClick={()=> this.toggle()}   className="pause-button">Pause</button>)
+            }
+          </div>
+        </div>
       );
     }
   }
