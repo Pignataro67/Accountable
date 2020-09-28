@@ -5,10 +5,11 @@ class WorkSession extends Component {
 
   render() {
     return (
-      "Hellooooo"
+      <div>
+        <h3>"worksessions"</h3>
+      </div>
     )
   }
-
 }
 
 export default WorkSession;
