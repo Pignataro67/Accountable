@@ -3,7 +3,7 @@ import ReactCountdownClock from "react-countdown-clock";
 
   class Timer extends Component {
 
-    constructor(){
+    constructor() {
       super()
       this.state = {
         pausation: false
@@ -18,7 +18,7 @@ import ReactCountdownClock from "react-countdown-clock";
       this.setState({
         pausation: !this.state.pausation
       })
-   };
+   }
 
     render() {
       const minutes = 20;
