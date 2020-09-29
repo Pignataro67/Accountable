@@ -16,11 +16,15 @@ body {
   margin-left: -125px;
 }
 
+.timer {
+  background-color: gray;
+  display: inline-block;
+}
+
 .calendar{
   width: 300px;
   margin: 10px;
 }
-
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -52,7 +56,7 @@ body {
   }
 }
 
-@media only screen (max-width: 768px){
+/* @media only screen (max-width: 768px){
 
 }
 
@@ -62,4 +66,4 @@ body {
 
 @media only screen (max-width: 1200px){
 
-}
+} */
