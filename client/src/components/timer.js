@@ -27,7 +27,7 @@ import ReactCountdownClock from "react-countdown-clock";
         <div className="timer">
         <ReactCountdownClock
           seconds={60 * minutes}
-          color="#232323"
+          color="#09792e"
           alpha={0.5}
           size={150}
           onComplete={this.myCallback}
